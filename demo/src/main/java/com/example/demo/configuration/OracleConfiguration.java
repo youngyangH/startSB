@@ -42,13 +42,13 @@ public class OracleConfiguration {
         this.url = url;
     }
 
-    @Bean
-    DataSource getDataSource() {
-        return DataSourceBuilder.create().type(OracleDataSource.class)
-                .username(userName)
-                .url(url)
-                .password(password)
-                .build();
-    }
+//    @Bean
+//    DataSource getDataSource() {
+//        return DataSourceBuilder.create().type(OracleDataSource.class)
+//                .username(userName)
+//                .url(url)
+//                .password(password)
+//                .build();
+//    }
 
 }

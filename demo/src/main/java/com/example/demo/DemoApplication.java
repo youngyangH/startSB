@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 
 @SpringBootApplication
-@EnableConfigurationProperties({OracleConfiguration.class})
+//@EnableConfigurationProperties({OracleConfiguration.class})
 public class DemoApplication {
 
 	public static void main(String[] args) {
