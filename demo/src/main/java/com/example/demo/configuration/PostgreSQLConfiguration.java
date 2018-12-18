@@ -1,18 +1,13 @@
 package com.example.demo.configuration;
 
-import oracle.jdbc.pool.OracleDataSource;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
-
 @Configuration
-@ConfigurationProperties(prefix = "oracle")
-@ConditionalOnProperty(name = "activeOracle", havingValue = "true")
-public class OracleConfiguration {
+@ConfigurationProperties(prefix = "psql")
+@ConditionalOnProperty(name= "ConditionalOnProperty", havingValue = "true")
+public class PostgreSQLConfiguration {
 
     private String userName;
 
@@ -44,13 +39,5 @@ public class OracleConfiguration {
         this.url = url;
     }
 
-    @Bean
-    DataSource getDataSource() {
-        return DataSourceBuilder.create().type(OracleDataSource.class)
-                .username(userName)
-                .url(url)
-                .password(password)
-                .build();
-    }
 
 }
