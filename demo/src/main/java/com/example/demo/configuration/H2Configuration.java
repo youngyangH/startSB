@@ -1,18 +1,13 @@
 package com.example.demo.configuration;
 
-import oracle.jdbc.pool.OracleDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import javax.sql.DataSource;
-
 @Configuration
-@ConfigurationProperties(prefix = "oracle")
-@Profile("dev")
-public class OracleConfiguration {
+@ConfigurationProperties(prefix = "h2")
+@Profile("h2")
+public class H2Configuration {
 
     private String userName;
 
@@ -42,15 +37,6 @@ public class OracleConfiguration {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    @Bean
-    DataSource getDataSource() {
-        return DataSourceBuilder.create().type(OracleDataSource.class)
-                .username(userName)
-                .url(url)
-                .password(password)
-                .build();
     }
 
 }
