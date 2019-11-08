@@ -1,8 +1,11 @@
 package com.example.demo.configuration;
 
+import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import young.mcap.research.tenant.scope.TenantScope;
 
 @Configuration
 @ConfigurationProperties(prefix = "h2")
@@ -39,4 +42,10 @@ public class H2Configuration {
         this.url = url;
     }
 
+    @Bean
+    public static CustomScopeConfigurer provideCustomScopeConfigurer() {
+        CustomScopeConfigurer customScopeConfigurer = new CustomScopeConfigurer();
+        customScopeConfigurer.addScope("tenant", new TenantScope());
+        return customScopeConfigurer;
+    }
 }
