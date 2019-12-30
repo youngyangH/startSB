@@ -64,7 +64,7 @@ public class RSAUtils {
      * </p>
      *
      * @return
-     * @throws Exception
+     * @throws
      */
     public static Map<String, Key> genKeyPair() throws Exception {
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);
@@ -87,7 +87,7 @@ public class RSAUtils {
      * @param privateKey 私钥(BASE64编码)
      *
      * @return
-     * @throws Exception
+     * @throws
      */
     public static String sign(byte[] data, String privateKey) throws Exception {
         byte[] keyBytes = Base64Utils.decodeFromString(privateKey);
@@ -135,7 +135,7 @@ public class RSAUtils {
      * @param encryptedData 已加密数据
      * @param privateKey 私钥(BASE64编码)
      * @return
-     * @throws Exception
+     * @throws
      */
     public static byte[] decryptByPrivateKey(byte[] encryptedData, String privateKey)
             throws Exception {
@@ -176,7 +176,7 @@ public class RSAUtils {
      * @param encryptedData 已加密数据
      * @param publicKey 公钥(BASE64编码)
      * @return
-     * @throws Exception
+     * @throws
      */
     public static byte[] decryptByPublicKey(byte[] encryptedData, String publicKey)
             throws Exception {
@@ -255,7 +255,7 @@ public class RSAUtils {
      * @param data 源数据
      * @param privateKey 私钥(BASE64编码)
      * @return
-     * @throws Exception
+     * @throws
      */
     public static byte[] encryptByPrivateKey(byte[] data, String privateKey)
             throws Exception {
@@ -293,7 +293,7 @@ public class RSAUtils {
      *
      * @param keyMap 密钥对
      * @return
-     * @throws Exception
+     * @throws
      */
     public static String getPrivateKey(Map<String, Object> keyMap)
             throws Exception {
@@ -308,7 +308,7 @@ public class RSAUtils {
      *
      * @param keyMap 密钥对
      * @return
-     * @throws Exception
+     * @throws
      */
     public static String getPublicKey(Map<String, Object> keyMap)
             throws Exception {
