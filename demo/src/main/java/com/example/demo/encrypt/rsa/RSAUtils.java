@@ -1,6 +1,7 @@
 package com.example.demo.encrypt.rsa;
 
 import org.springframework.util.Base64Utils;
+import sun.misc.BASE64Decoder;
 
 import javax.crypto.Cipher;
 import java.io.ByteArrayOutputStream;
@@ -143,7 +144,7 @@ public class RSAUtils {
         PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
         Key privateK = keyFactory.generatePrivate(pkcs8KeySpec);
-        Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
+        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.DECRYPT_MODE, privateK);
         int inputLen = encryptedData.length;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -314,6 +315,17 @@ public class RSAUtils {
             throws Exception {
         Key key = (Key) keyMap.get(PUBLIC_KEY);
         return Base64Utils.encodeToString(key.getEncoded());
+    }
+
+    public static void main(String[] args) throws Exception {
+        String privateKey="";
+
+        String source = "hiVgsCYegJx3PB5rPtP4xbdmliq+s85Xpm7lRX3VZfy6nzqI7aN1S4kv0rKVW/spSxeLE+tA0C/CSDFSxzNyLYfiCeWcZyKGAA6iTEP/Cs5GmBB4TQxOaCZ0O+u7AUzryUWaNw5xrf0o8hkXtLHsBbwS7juz9CgvqPcsxvc8TOZ+rSl42w0RV5nGJniTTXYv/vXHMGxelSuKP4Ya3ClfYhXGQNjBs9wY2vx0bY8GoIzst9fgRc9K1RaEFhAx11YEFeKu3GjqUj+AwXnkpoXqKadDafXha36w6zXDcvdyDrL/53kNmy/dcrZAkWSBLNmxEUfp8tIMvdNhTHUsRMWBCsqNlCgk7mTi29Y+YRz3xQLIEtAuHEk86c9dsEHOgmZgDz44NRfyrwmCU/msDODtB+j5gYPQrae4PTytuwai9Ib0dXmDU9NJZuLdG31ppL7pt7EJxYejD6lTtuMGC9AOuWDINDg8RtFhYJ+u+wIjzNH1v8sdL6OyCdpEPdFaSqJ0iklSrqpKhtyCAsisJlrhlddXOGQZAjwYERgxU5hlubQt+1pQSYczYixRwbbcdWAlTzgn5nInDf26JOE8vpNv8ROxZzzUqRZTkCa47MMg33nA3pITzMYkt6Z+/XkoUqE7Gkz6CEyS0z8tteZDUdsLMzb/bp9A/d9Z2bdXREFN50zWRywxbTtiwbA7UGwMOpV5ryAX1gbh3heAR9akH0ZuWfExNVciMvXz1gBhkhOghu/S08xrH4EI6ZcogPQdmLxovm75KZ2tqe0EWRFIx/G0IhXziLzT+frmxqY8WgNQGBg=";
+        byte[] data = source.getBytes();
+        byte[] result = RSAUtils.decryptByPrivateKey(data, privateKey);
+        System.out.println(result.toString());
+        System.out.println(new BASE64Decoder().decodeBuffer(result.toString()));
+
     }
 
 }
