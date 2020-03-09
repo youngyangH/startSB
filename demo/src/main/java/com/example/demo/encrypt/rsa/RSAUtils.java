@@ -4,6 +4,7 @@ import org.springframework.util.Base64Utils;
 import sun.misc.BASE64Decoder;
 
 import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.ByteArrayOutputStream;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
@@ -111,7 +112,7 @@ public class RSAUtils {
      * @param sign 数字签名
      *
      * @return
-     * @throws Exception
+     * @throws
      *
      */
     public static boolean verify(byte[] data, String publicKey, String sign)
@@ -141,7 +142,7 @@ public class RSAUtils {
     public static byte[] decryptByPrivateKey(byte[] encryptedData, String privateKey)
             throws Exception {
         byte[] keyBytes = Base64Utils.decodeFromString(privateKey);
-        PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
         Key privateK = keyFactory.generatePrivate(pkcs8KeySpec);
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");

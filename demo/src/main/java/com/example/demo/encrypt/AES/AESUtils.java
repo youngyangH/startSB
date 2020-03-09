@@ -19,11 +19,6 @@ public class AESUtils {
     public static Key getKey(String keySeed) {
         SecretKeySpec secretKey = null;
         try {
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-//            KeySpec spec = new PBEKeySpec(keySeed.toCharArray(), salt.getBytes(),256);
-//            SecretKey tmp = factory.generateSecret(spec);
-//            secretKey = new SecretKeySpec(tmp.getEncoded(), "AES");
-
             secretKey = new SecretKeySpec(keySeed.getBytes(), "AES");
         } catch (Exception e) {
             e.printStackTrace();
