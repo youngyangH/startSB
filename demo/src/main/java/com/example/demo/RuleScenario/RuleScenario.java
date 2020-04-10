@@ -1,11 +1,15 @@
 package com.example.demo.RuleScenario;
 
+import com.example.demo.rule.Rule;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -26,6 +30,9 @@ public class RuleScenario {
     private String name;
 
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Rule> ruleList;
 
     public Long getId() {
         return id;
@@ -49,5 +56,13 @@ public class RuleScenario {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Rule> getRuleList() {
+        return ruleList;
+    }
+
+    public void setRuleList(List<Rule> ruleList) {
+        this.ruleList = ruleList;
     }
 }

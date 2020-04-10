@@ -9,17 +9,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/rule")
+//@Profile(value = "hana") //Enable with profile hana
 public class RuleController {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
     @Autowired
-    private RuleRepository ruleRepository;
+    private RuleService ruleService;
 
     @RequestMapping("/{id}")
     public Rule getRule(@PathVariable(value = "id") Long ruleId){
-        return ruleRepository.getOne(ruleId);
+        return ruleService.findById(ruleId);
     }
 
     @RequestMapping("/insert/{id}")

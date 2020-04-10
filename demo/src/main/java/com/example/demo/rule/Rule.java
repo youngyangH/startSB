@@ -19,8 +19,7 @@ public class Rule {
      */
     protected Rule(){}
 
-    public Rule(Long id, String name) {
-        this.id = id;
+    public Rule(String name) {
         this.name = name;
     }
 
