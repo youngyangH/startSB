@@ -23,27 +23,26 @@
 	</properties>
 
 	<dependencies>
-
-		<!-- https://mvnrepository.com/artifact/com.sap.cloud.db.jdbc/ngdbc -->
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/com.sap.cloud.db.jdbc/ngdbc &ndash;&gt;-->
 		<dependency>
 			<groupId>com.sap.cloud.db.jdbc</groupId>
 			<artifactId>ngdbc</artifactId>
 			<version>2.3.58</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/oracle/ojdbc6 &ndash;&gt; -->
         <dependency>
             <groupId>oracle</groupId>
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.3</version>
         </dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/org.postgresql/postgresql &ndash;&gt;
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4.1212</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -62,6 +61,12 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
+		</dependency>
+
+		<!--RSocket server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-rsocket</artifactId>
 		</dependency>
 
 		<dependency>
